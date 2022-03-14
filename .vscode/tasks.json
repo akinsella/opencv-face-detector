@@ -1,0 +1,46 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "g++",
+            "dependsOrder": "sequence",
+            "dependsOn": ["g++ - Create build folder", "g++ - Build"]
+        },
+        {
+            "label": "g++ - Create build folder",
+            "type": "shell",
+            "command": "mkdir -p ${workspaceRoot}/build",
+        },
+        {
+            "type": "shell",
+            "label": "g++ - Build",
+            "command": "clang++",
+            "args": [
+                "${fileBasename}",
+                "-std=c++17",
+                "-stdlib=libc++",
+                "-lopencv_core",
+                "-lopencv_imgproc",
+                "-lopencv_imgcodecs",
+                "-lopencv_objdetect",
+                "-lopencv_highgui",
+                "-lpthread",
+                "-L/opt/homebrew/Cellar/opencv/4.5.4_2/lib",
+                "-I/usr/local/include/",
+                "-I/opt/homebrew/Cellar/opencv/4.5.4_2/include/opencv4/",
+                "-o", "${workspaceRoot}/build/${fileBasenameNoExtension}",
+                "--debug"
+            ],
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

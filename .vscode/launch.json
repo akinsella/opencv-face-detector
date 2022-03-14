@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C++ Launch - face_detector",                
+            "type": "lldb",                         
+            "request": "launch",
+            "program": "${workspaceRoot}/build/face_detector",
+            "args": [
+                "-i=./images/100k-ai-faces-3.jpeg", 
+                "-d=./"
+            ],
+            "stopAtEntry": true,
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": "g++",
+        }
+    ]
+ }
